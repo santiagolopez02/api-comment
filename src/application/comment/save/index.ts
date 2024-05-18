@@ -1,6 +1,7 @@
 import { Comment } from "@/domain/entities";
 import { CommentRepository } from "@/domain/interfaces/repositories";
 
+// Use-case to save a comment
 class CommentSaveUseCase {
   readonly commentRepository: CommentRepository;
 
@@ -11,9 +12,7 @@ class CommentSaveUseCase {
   async save(comment: string, id_img: number) {
     try {
       const commentObject: Comment = new Comment(comment, id_img);
-      const res = await this.commentRepository.save(commentObject);
-
-      console.log(res);
+      const res: Comment = await this.commentRepository.save(commentObject);
 
       return res;
     } catch (error) {

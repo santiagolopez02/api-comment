@@ -1,2 +1,3 @@
 import CommentSaveUseCase from "./save";
-export { CommentSaveUseCase };
+import CommentGelAllByIdImgUseCase from "./get-all";
+export { CommentSaveUseCase, CommentGelAllByIdImgUseCase };

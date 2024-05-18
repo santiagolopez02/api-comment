@@ -1,4 +1,6 @@
+//Class Comment
 export default class Comment {
+  public id?: number;
   public comment: string;
   public id_img: number;
   public active?: boolean;
@@ -8,8 +10,10 @@ export default class Comment {
     comment: string,
     id_img: number,
     active?: boolean,
-    created_at?: Date
+    created_at?: Date,
+    id?: number
   ) {
+    this.id = id;
     this.comment = comment;
     this.id_img = id_img;
     this.active = active;
