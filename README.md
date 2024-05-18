@@ -17,8 +17,8 @@ Ensure you have the following software installed:
 1. Clone the repository:
 
    ```sh
-    git clone <repository-url>
-    cd <repository-name>
+    git clone https://github.com/santiagolopez02/api-comment.git
+    cd api-comment
 
    ```
 
@@ -64,13 +64,6 @@ Ensure you have the following software installed:
 
    ```sh
    npm run dev
-
-   ```
-
-   -In development mode:
-
-   ```sh
-   npm run start
 
    ```
 
