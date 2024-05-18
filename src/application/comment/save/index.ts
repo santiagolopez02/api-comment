@@ -8,9 +8,9 @@ class CommentSaveUseCase {
     this.commentRepository = commentRepository;
   }
 
-  async save(comment: string, id_img: number, active: boolean) {
+  async save(comment: string, id_img: number) {
     try {
-      const commentObject: Comment = new Comment(comment, id_img, active);
+      const commentObject: Comment = new Comment(comment, id_img);
       const res = await this.commentRepository.save(commentObject);
 
       console.log(res);

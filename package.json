@@ -1,5 +1,5 @@
 {
-  "name": "dte-core",
+  "name": "api-comment",
   "version": "1.0.0",
   "main": "index.js",
   "_moduleAliases": {
@@ -8,16 +8,20 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "tsc && concurrently \"tsc -w\" \"node --watch dist/index.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc && concurrently \"tsc -w\" \"node --watch dist/index.js\""
+  },
+  "prisma": {
+    "schema": "./src/infrastructure/connectors/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^5.14.0",
     "express": "^4.19.2",
-    "module-alias": "^2.2.3"
+    "module-alias": "^2.2.3",
+    "prisma": "^5.14.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
