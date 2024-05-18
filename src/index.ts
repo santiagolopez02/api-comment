@@ -3,7 +3,7 @@ import express, { Express } from "express";
 import http from "http";
 import bodyParser from "body-parser";
 
-import commentRouter from "@/infrastructure/routes/comment";
+import commentRouter from "@/infrastructure/routes/index";
 
 const app: Express = express();
 let port = 8080;
