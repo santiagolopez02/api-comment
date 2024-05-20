@@ -2,13 +2,13 @@
 export default class Comment {
   public id?: number;
   public comment: string;
-  public id_img: number;
+  public id_img: string;
   public active?: boolean;
   public created_at?: Date;
 
   constructor(
     comment: string,
-    id_img: number,
+    id_img: string,
     active?: boolean,
     created_at?: Date,
     id?: number

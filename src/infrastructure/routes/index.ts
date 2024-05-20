@@ -12,8 +12,12 @@ const router = express.Router();
 // Endpoint to handle GET requests for fetching comments by image ID
 router.get("/comment", async (req: Request, res: Response) => {
   try {
-    const id_img: number = req?.body?.id_img;
-
+    const id_img: string = req.query.id_img as string;
+    if (!id_img)
+      res.status(500).json({
+        status: "ERROR",
+        message: "Error missing parameter id_im",
+      });
     // Creating an instance of CommentRepository using PostgreSQL implementation
     const commentRepository: CommentRepository =
       new CommentPostgreSQLRepository();
@@ -35,8 +39,14 @@ router.get("/comment", async (req: Request, res: Response) => {
 // Endpoint to handle POST requests for saving a new comment
 router.post("/comment/save", async (req: Request, res: Response) => {
   try {
+    console.log("Entra: ", req?.body?.comment, req?.body?.id_img);
     const comment: string = req?.body?.comment;
-    const id_img: number = req?.body?.id_img;
+    const id_img: string = req?.body?.id_img;
+    if (!id_img || !comment)
+      res.status(500).json({
+        status: "ERROR",
+        message: "Error missing parameters id_img and comment",
+      });
 
     // Creating an instance of CommentRepository using PostgreSQL implementation
     const commentRepository: CommentRepository =

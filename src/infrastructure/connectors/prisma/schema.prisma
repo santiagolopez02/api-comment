@@ -9,7 +9,7 @@ datasource db {
 
 model comment {
   id         Int      @id @unique @default(autoincrement())
-  id_img     Int
+  id_img     String
   comment    String   @db.Text
   created_at DateTime @default(now())
   active     Boolean  @default(true)

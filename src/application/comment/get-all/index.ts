@@ -8,7 +8,7 @@ class CommentGelAllByIdImgUseCase {
     this.commentRepository = commentRepository;
   }
 
-  async getAllByIdImg(id_img: number) {
+  async getAllByIdImg(id_img: string) {
     try {
       const res: Comment[] = await this.commentRepository.getAllByIdImg(id_img);
 

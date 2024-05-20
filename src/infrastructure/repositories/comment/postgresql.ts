@@ -3,19 +3,24 @@ import { CommentRepository } from "@/domain/interfaces/repositories";
 import prisma from "@/infrastructure/connectors/prisma/client";
 export default class CommentPostgreSQLRepository implements CommentRepository {
   //Service to save comment in database
-  async save(comment: Comment): Promise<Comment> {
+  async save(comment: string, id_img: string): Promise<Comment> {
     try {
       const {
         comment: commentRes,
-        id_img,
+        id_img: idImg,
         active,
         created_at,
         id,
-      } = await prisma.comment.create({ data: comment });
+      } = await prisma.comment.create({
+        data: {
+          comment,
+          id_img,
+        },
+      });
 
       const commentResponse = new Comment(
         commentRes,
-        id_img,
+        idImg,
         active,
         new Date(created_at),
         id
@@ -23,12 +28,13 @@ export default class CommentPostgreSQLRepository implements CommentRepository {
 
       return commentResponse;
     } catch (error) {
+      console.error(error);
       throw new Error();
     }
   }
 
   //Service to get all comments by image id
-  async getAllByIdImg(id_img: number): Promise<Comment[]> {
+  async getAllByIdImg(id_img: string): Promise<Comment[]> {
     try {
       const res = await prisma.comment.findMany({
         where: {
