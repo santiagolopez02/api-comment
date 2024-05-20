@@ -39,7 +39,6 @@ router.get("/comment", async (req: Request, res: Response) => {
 // Endpoint to handle POST requests for saving a new comment
 router.post("/comment/save", async (req: Request, res: Response) => {
   try {
-    console.log("Entra: ", req?.body?.comment, req?.body?.id_img);
     const comment: string = req?.body?.comment;
     const id_img: string = req?.body?.id_img;
     if (!id_img || !comment)

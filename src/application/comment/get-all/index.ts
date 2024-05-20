@@ -14,7 +14,6 @@ class CommentGelAllByIdImgUseCase {
 
       return res;
     } catch (error) {
-      console.log("error save use-case: ", error);
       throw new Error();
     }
   }
