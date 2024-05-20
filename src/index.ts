@@ -30,3 +30,5 @@ server.on("listening", () => {
 
 // Start the server
 server.listen(port);
+
+export default app;

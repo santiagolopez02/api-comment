@@ -1,17 +1,16 @@
 import { Comment } from "@/domain/entities";
 import { CommentRepository } from "@/domain/interfaces/repositories";
 // Use-case to get all comment by id_img
-class CommentGetAllByIdImgUseCase {
+class CommentDeleteByIdImgUseCase {
   readonly commentRepository: CommentRepository;
 
   constructor(commentRepository: CommentRepository) {
     this.commentRepository = commentRepository;
   }
 
-  async getAllByIdImg(id_img: string) {
+  async deleteById(id: number) {
     try {
-      const res: Comment[] = await this.commentRepository.getAllByIdImg(id_img);
-
+      const res: void = await this.commentRepository.deleteById(id);
       return res;
     } catch (error) {
       throw new Error();
@@ -19,4 +18,4 @@ class CommentGetAllByIdImgUseCase {
   }
 }
 
-export default CommentGetAllByIdImgUseCase;
+export default CommentDeleteByIdImgUseCase;

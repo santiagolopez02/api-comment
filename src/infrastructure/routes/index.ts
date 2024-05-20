@@ -1,6 +1,7 @@
 import {
   CommentSaveUseCase,
-  CommentGelAllByIdImgUseCase,
+  CommentGetAllByIdImgUseCase,
+  CommentDeleteByIdImgUseCase,
 } from "@/application/comment";
 import { CommentRepository } from "@/domain/interfaces/repositories";
 import { CommentPostgreSQLRepository } from "@/infrastructure/repositories";
@@ -21,8 +22,8 @@ router.get("/comment", async (req: Request, res: Response) => {
     // Creating an instance of CommentRepository using PostgreSQL implementation
     const commentRepository: CommentRepository =
       new CommentPostgreSQLRepository();
-    const commentUseCase: CommentGelAllByIdImgUseCase =
-      new CommentGelAllByIdImgUseCase(commentRepository);
+    const commentUseCase: CommentGetAllByIdImgUseCase =
+      new CommentGetAllByIdImgUseCase(commentRepository);
 
     const response = await commentUseCase.getAllByIdImg(id_img);
 
@@ -57,6 +58,35 @@ router.post("/comment/save", async (req: Request, res: Response) => {
     const response = await commentUseCase.save(comment, id_img);
     // Sending successful response with saved comment data
     res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json({
+      status: "ERROR",
+      message: err instanceof Error ? err.message : "Unexpected error",
+    });
+  }
+});
+
+// Endpoint to handle POST requests for delete a  comment
+router.delete("/comment/delete", async (req: Request, res: Response) => {
+  try {
+    const id: number = req?.body?.id;
+
+    if (!id)
+      res.status(500).json({
+        status: "ERROR",
+        message: "Error missing parameters id ",
+      });
+
+    const commentRepository: CommentRepository =
+      new CommentPostgreSQLRepository();
+    const commentUseCase: CommentDeleteByIdImgUseCase =
+      new CommentDeleteByIdImgUseCase(commentRepository);
+
+    const response = await commentUseCase.deleteById(id);
+    console.log("response", response);
+    res.status(200).json({
+      is_delete: true,
+    });
   } catch (err) {
     res.status(500).json({
       status: "ERROR",

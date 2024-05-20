@@ -67,4 +67,17 @@ Ensure you have the following software installed:
 
    ```
 
+## RUN TEST
+
+Ensure you have the proyect installed:
+
+1. Running the jest test
+
+   -To run test:
+
+   ```sh
+   npx jest
+
+   ```
+
 This README file provides all the necessary information for a developer to understand, set up, and run your project correctly.

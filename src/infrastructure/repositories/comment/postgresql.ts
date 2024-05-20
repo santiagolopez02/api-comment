@@ -52,4 +52,15 @@ export default class CommentPostgreSQLRepository implements CommentRepository {
       throw new Error();
     }
   }
+  async deleteById(id: number): Promise<void> {
+    try {
+      await prisma.comment.delete({
+        where: {
+          id,
+        },
+      });
+    } catch (error) {
+      throw new Error();
+    }
+  }
 }

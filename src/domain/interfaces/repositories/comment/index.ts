@@ -4,4 +4,5 @@ import { Comment } from "@/domain/entities";
 export default interface CommentRepository {
   save: (comment: string, id_img: string) => Promise<Comment>;
   getAllByIdImg: (id_img: string) => Promise<Comment[]>;
+  deleteById: (id: number) => Promise<void>;
 }
